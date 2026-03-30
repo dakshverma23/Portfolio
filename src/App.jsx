@@ -6,7 +6,6 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ArtisticBackground from './components/ArtisticBackground'
-import InteractiveRobot from './components/InteractiveRobot'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -35,7 +34,6 @@ function App() {
   return (
     <div className="min-h-screen relative">
       <ArtisticBackground />
-      <InteractiveRobot />
       <div className="relative z-10">
         <Navigation activeSection={activeSection} />
         <Hero />
