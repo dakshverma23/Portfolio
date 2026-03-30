@@ -10,6 +10,8 @@
   body {
     @apply bg-gray-900 text-gray-100;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0f0a1a 100%);
+    background-attachment: fixed;
   }
 
   .signature-font {
@@ -23,11 +25,87 @@
   .glass {
     @apply bg-white/10 backdrop-blur-md border border-white/20;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   }
   
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400;
-    animation: gradient-shift 3s ease infinite;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #a855f7, #ec4899, #06b6d4, #a855f7);
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* Mesh gradient background */
+  .mesh-gradient {
+    background: 
+      radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.3) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.3) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.3) 0px, transparent 50%);
+    animation: mesh-move 20s ease infinite;
+  }
+
+  @keyframes mesh-move {
+    0%, 100% {
+      background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%;
+    }
+    25% {
+      background-position: 100% 0%, 100% 100%, 0% 100%, 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%, 0% 100%, 0% 0%, 100% 0%;
+    }
+    75% {
+      background-position: 0% 100%, 0% 0%, 100% 0%, 100% 100%;
+    }
+  }
+
+  /* Liquid blob animation */
+  .liquid-blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: blob-morph 8s ease-in-out infinite;
+  }
+
+  @keyframes blob-morph {
+    0%, 100% {
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    25% {
+      border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+    }
+    50% {
+      border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+    }
+    75% {
+      border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+    }
+  }
+
+  /* Neon glow effect */
+  .neon-glow {
+    text-shadow: 
+      0 0 10px rgba(168, 85, 247, 0.8),
+      0 0 20px rgba(168, 85, 247, 0.6),
+      0 0 30px rgba(168, 85, 247, 0.4),
+      0 0 40px rgba(236, 72, 153, 0.3);
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes neon-pulse {
+    0%, 100% {
+      text-shadow: 
+        0 0 10px rgba(168, 85, 247, 0.8),
+        0 0 20px rgba(168, 85, 247, 0.6),
+        0 0 30px rgba(168, 85, 247, 0.4),
+        0 0 40px rgba(236, 72, 153, 0.3);
+    }
+    50% {
+      text-shadow: 
+        0 0 20px rgba(168, 85, 247, 1),
+        0 0 30px rgba(168, 85, 247, 0.8),
+        0 0 40px rgba(168, 85, 247, 0.6),
+        0 0 50px rgba(236, 72, 153, 0.5);
+    }
   }
 
   @keyframes gradient-shift {
@@ -100,22 +178,60 @@
     }
   }
 
+  /* Holographic effect */
+  .holographic {
+    background: linear-gradient(
+      45deg,
+      rgba(168, 85, 247, 0.3) 0%,
+      rgba(236, 72, 153, 0.3) 25%,
+      rgba(6, 182, 212, 0.3) 50%,
+      rgba(236, 72, 153, 0.3) 75%,
+      rgba(168, 85, 247, 0.3) 100%
+    );
+    background-size: 400% 400%;
+    animation: holographic-shift 3s ease infinite;
+  }
+
+  @keyframes holographic-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #1a1a2e;
+    background: linear-gradient(180deg, #0a0a0f 0%, #1a0a2e 100%);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #a855f7, #ec4899);
-    border-radius: 5px;
+    background: linear-gradient(180deg, #a855f7, #ec4899);
+    border-radius: 10px;
+    border: 2px solid #0a0a0f;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #9333ea, #db2777);
+    background: linear-gradient(180deg, #9333ea, #db2777);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
 }
-

@@ -5,6 +5,7 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ArtisticBackground from './components/ArtisticBackground'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -31,13 +32,16 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen">
-      <Navigation activeSection={activeSection} />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
+    <div className="min-h-screen relative">
+      <ArtisticBackground />
+      <div className="relative z-10">
+        <Navigation activeSection={activeSection} />
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   )
 }

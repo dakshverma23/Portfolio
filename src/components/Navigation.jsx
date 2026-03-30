@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const Navigation = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -38,17 +39,23 @@ const Navigation = ({ activeSection }) => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          <button
+          <motion.button
             onClick={() => scrollToSection('home')}
-            className="text-4xl font-bold gradient-text hover:scale-105 transition-transform signature-font"
+            className="text-4xl font-bold gradient-text signature-font"
+            whileHover={{ 
+              scale: 1.1,
+              rotate: [0, -5, 5, 0],
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.3 }}
           >
             DV
-          </button>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`relative px-3 py-2 transition-colors ${
@@ -56,12 +63,18 @@ const Navigation = ({ activeSection }) => {
                     ? 'text-purple-400'
                     : 'text-gray-300 hover:text-purple-400'
                 }`}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></span>
+                  <motion.span 
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"
+                    layoutId="activeSection"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
                 )}
-              </button>
+              </motion.button>
             ))}
           </div>
 

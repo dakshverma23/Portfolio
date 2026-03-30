@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Github, Linkedin, Mail, MapPin, Send } from 'lucide-react'
+import { motion } from 'framer-motion'
+import SectionTitle from './SectionTitle'
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -57,15 +59,9 @@ const Contact = () => {
       }`}
     >
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="gradient-text">Touch</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-          </p>
-        </div>
+        <SectionTitle subtitle="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.">
+          Get In <span className="gradient-text">Touch</span>
+        </SectionTitle>
 
         <div className={`grid md:grid-cols-2 gap-12 transition-all duration-700 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
@@ -103,31 +99,29 @@ const Contact = () => {
               <div className="mt-8 pt-8 border-t border-white/10">
                 <h4 className="font-semibold mb-4">Follow Me</h4>
                 <div className="flex gap-4">
-                  <a
-                    href="https://github.com/dakshverma23"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 glass rounded-lg hover:bg-white/20 transition-all hover:scale-110"
-                    aria-label="GitHub"
-                  >
-                    <Github size={20} />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/daksh-verma-580326199/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 glass rounded-lg hover:bg-white/20 transition-all hover:scale-110"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="mailto:dakshverma633@gmail.com"
-                    className="p-3 glass rounded-lg hover:bg-white/20 transition-all hover:scale-110"
-                    aria-label="Email"
-                  >
-                    <Mail size={20} />
-                  </a>
+                  {[
+                    { href: "https://github.com/dakshverma23", icon: Github, label: "GitHub" },
+                    { href: "https://www.linkedin.com/in/daksh-verma-580326199/", icon: Linkedin, label: "LinkedIn" },
+                    { href: "mailto:dakshverma633@gmail.com", icon: Mail, label: "Email" }
+                  ].map((social) => (
+                    <motion.a
+                      key={social.label}
+                      href={social.href}
+                      target={social.label !== "Email" ? "_blank" : undefined}
+                      rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
+                      className="p-3 glass rounded-lg"
+                      aria-label={social.label}
+                      whileHover={{ 
+                        scale: 1.2,
+                        rotate: 360,
+                        backgroundColor: "rgba(255, 255, 255, 0.2)"
+                      }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <social.icon size={20} />
+                    </motion.a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -185,13 +179,23 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button
+              <motion.button
                 type="submit"
-                className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-white hover:from-purple-600 hover:to-pink-600 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 flex items-center justify-center gap-2"
+                className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-white flex items-center justify-center gap-2"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 0 30px rgba(168, 85, 247, 0.6)"
+                }}
+                whileTap={{ scale: 0.95 }}
               >
-                <Send size={20} />
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  <Send size={20} />
+                </motion.div>
                 Send Message
-              </button>
+              </motion.button>
             </form>
           </div>
         </div>

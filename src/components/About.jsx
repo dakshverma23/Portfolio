@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
+import SectionTitle from './SectionTitle'
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -41,12 +43,9 @@ const About = () => {
       }`}
     >
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="gradient-text">Me</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
-        </div>
+        <SectionTitle>
+          About <span className="gradient-text">Me</span>
+        </SectionTitle>
 
         <div className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-700 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
@@ -75,18 +74,39 @@ const About = () => {
 
             {/* Key Achievements */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="glass rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                <div className="text-3xl font-bold gradient-text mb-2">15+</div>
-                <div className="text-sm text-gray-400">Projects</div>
-              </div>
-              <div className="glass rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                <div className="text-3xl font-bold gradient-text mb-2">3+</div>
-                <div className="text-sm text-gray-400">Domains</div>
-              </div>
-              <div className="glass rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                <div className="text-3xl font-bold gradient-text mb-2">100%</div>
-                <div className="text-sm text-gray-400">Dedication</div>
-              </div>
+              {[
+                { value: "15+", label: "Projects" },
+                { value: "3+", label: "Domains" },
+                { value: "100%", label: "Dedication" }
+              ].map((stat, index) => (
+                <motion.div 
+                  key={stat.label}
+                  className="glass rounded-xl p-6 text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotate: [0, -5, 5, 0],
+                    boxShadow: "0 10px 30px rgba(168, 85, 247, 0.3)"
+                  }}
+                >
+                  <motion.div 
+                    className="text-3xl font-bold gradient-text mb-2"
+                    animate={{ 
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3
+                    }}
+                  >
+                    {stat.value}
+                  </motion.div>
+                  <div className="text-sm text-gray-400">{stat.label}</div>
+                </motion.div>
+              ))}
             </div>
           </div>
 
@@ -96,12 +116,21 @@ const About = () => {
             <div className="glass rounded-2xl p-8">
               <div className="flex flex-wrap gap-3">
                 {skills.map((skill, index) => (
-                  <span
+                  <motion.span
                     key={index}
-                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-sm font-medium text-gray-200 hover:scale-110 hover:border-purple-400 transition-all cursor-default"
+                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-sm font-medium text-gray-200 cursor-default"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -5, 5, 0],
+                      borderColor: "rgba(168, 85, 247, 0.8)",
+                      boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)"
+                    }}
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
