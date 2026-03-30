@@ -47,26 +47,26 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
     >
-      {/* Reduced animated particles - only 15 instead of 30 */}
-      {[...Array(15)].map((_, i) => (
+      {/* Minimal particles - only 8 */}
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            width: `${3 + Math.random() * 3}px`,
-            height: `${3 + Math.random() * 3}px`,
+            width: `${3 + Math.random() * 2}px`,
+            height: `${3 + Math.random() * 2}px`,
             background: i % 3 === 0 ? '#a855f7' : i % 3 === 1 ? '#ec4899' : '#06b6d4',
-            boxShadow: `0 0 ${15 + Math.random() * 15}px currentColor`,
+            boxShadow: `0 0 ${10 + Math.random() * 10}px currentColor`,
           }}
           animate={{
-            y: [0, -120, 0],
-            opacity: [0, 0.8, 0],
+            y: [0, -100, 0],
+            opacity: [0, 0.6, 0],
             scale: [0, 1, 0],
           }}
           transition={{
-            duration: 4 + Math.random() * 2,
+            duration: 5 + Math.random() * 2,
             repeat: Infinity,
             delay: Math.random() * 3,
             ease: "easeInOut"
