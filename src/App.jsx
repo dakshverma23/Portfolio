@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import About from './components/About'
-import Projects from './components/Projects'
+import InteractiveIslandProjects from './components/InteractiveIslandProjects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ArtisticBackground from './components/ArtisticBackground'
@@ -38,7 +38,7 @@ function App() {
         <Navigation activeSection={activeSection} />
         <Hero />
         <About />
-        <Projects />
+        <InteractiveIslandProjects />
         <Contact />
         <Footer />
       </div>

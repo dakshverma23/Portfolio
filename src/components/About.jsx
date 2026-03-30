@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import TechSphere from './TechSphere'
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -25,41 +26,6 @@ const About = () => {
       }
     }
   }, [])
-
-  const techStack = {
-    'Frontend Frameworks': [
-      'React.js',
-      'Tailwind CSS',
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'Vite'
-    ],
-    'Backend & Languages': [
-      'Node.js',
-      'Express.js',
-      'Python',
-      'JavaScript',
-      'TypeScript',
-      'REST APIs'
-    ],
-    'Databases & Tools': [
-      'MongoDB',
-      'PostgreSQL',
-      'Firebase',
-      'Git',
-      'Docker',
-      'Postman'
-    ],
-    'AI & Machine Learning': [
-      'TensorFlow',
-      'PyTorch',
-      'Keras',
-      'OpenCV',
-      'Deep Learning',
-      'Computer Vision'
-    ]
-  }
 
   return (
     <section
@@ -118,51 +84,8 @@ const About = () => {
           <h3 className="text-4xl font-bold mb-4 text-center">
             Tech <span className="gradient-text">Stack</span>
           </h3>
-          <p className="text-gray-400 text-center mb-12">
-            Scroll to reveal my skills
-          </p>
-
-          <div className="space-y-12">
-            {Object.entries(techStack).map(([category, skills], categoryIndex) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              >
-                <h4 className="text-2xl font-semibold mb-6 text-purple-400">
-                  {category}
-                </h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {skills.map((skill, index) => (
-                    <motion.div
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        duration: 0.3, 
-                        delay: index * 0.05,
-                        type: "spring",
-                        stiffness: 100
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        y: -5,
-                        boxShadow: "0 10px 30px rgba(168, 85, 247, 0.3)"
-                      }}
-                      className="glass rounded-xl p-4 text-center cursor-default group"
-                    >
-                      <span className="text-gray-200 font-medium group-hover:text-purple-300 transition-colors">
-                        {skill}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          
+          <TechSphere />
         </motion.div>
 
         {/* Stats Section */}
