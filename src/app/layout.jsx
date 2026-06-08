@@ -3,9 +3,6 @@ import './globals.css'
 export const metadata = {
   title: 'Daksh Verma - Portfolio',
   description: 'Building intelligent systems and scalable web applications with cutting-edge technologies. Specializing in deep learning, computer vision, and modern full-stack development.',
-  icons: {
-    icon: '/vite.svg',
-  },
 }
 
 export default function RootLayout({ children }) {
