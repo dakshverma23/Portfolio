@@ -95,23 +95,21 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className={`py-20 px-6 relative transition-opacity duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
+      className={`py-20 px-6 relative transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
     >
       <div className="container mx-auto max-w-6xl">
         <SectionTitle subtitle="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.">
           Get In <span className="gradient-text">Touch</span>
         </SectionTitle>
 
-        <div className={`grid md:grid-cols-2 gap-12 transition-all duration-700 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
+        <div className={`grid md:grid-cols-2 gap-12 transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}>
           {/* Contact Information */}
           <div className="space-y-6">
             <div className="glass rounded-2xl p-8">
               <h3 className="text-2xl font-semibold mb-6 text-purple-400">Contact Information</h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-purple-500/20 rounded-lg">
@@ -145,7 +143,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Location</h4>
-                    <p className="text-gray-300">Available for Remote Work</p>
+                    <p className="text-gray-300">India</p>
                   </div>
                 </div>
               </div>
@@ -172,7 +170,7 @@ const Contact = () => {
                       }}
                       className="p-3 glass rounded-lg"
                       aria-label={social.label}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.2,
                         rotate: 360,
                         backgroundColor: "rgba(255, 255, 255, 0.2)"
@@ -243,10 +241,9 @@ const Contact = () => {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-white flex items-center justify-center gap-2 ${
-                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-                whileHover={!isSubmitting ? { 
+                className={`w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-white flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                whileHover={!isSubmitting ? {
                   scale: 1.05,
                   boxShadow: "0 0 30px rgba(168, 85, 247, 0.6)"
                 } : {}}

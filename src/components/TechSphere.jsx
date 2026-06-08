@@ -6,7 +6,7 @@ import {
   SiReact, SiNodedotjs, SiPython, SiTensorflow, SiMongodb, 
   SiPytorch, SiJavascript, SiExpress, SiTailwindcss, SiPostgresql,
   SiKeras, SiDocker, SiGit, SiOpencv, SiTypescript, SiFirebase,
-  SiHtml5, SiVite, SiPostman
+  SiHtml5, SiVite, SiPostman, SiNextdotjs, SiSupabase
 } from 'react-icons/si'
 import { FaBrain, FaCamera, FaNetworkWired, FaCss3Alt } from 'react-icons/fa'
 
@@ -38,6 +38,8 @@ const TechSphere = () => {
     { name: 'CSS', icon: FaCss3Alt, color: '#1572b6' },
     { name: 'Vite', icon: SiVite, color: '#646cff' },
     { name: 'Postman', icon: SiPostman, color: '#ff6c37' },
+    { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff' },
+    { name: 'Supabase', icon: SiSupabase, color: '#3ecf8e' },
   ]
 
   // Hexagonal grid positions (honeycomb pattern)
@@ -53,7 +55,8 @@ const TechSphere = () => {
       { q: -2, r: 0 }, { q: -2, r: 1 }, { q: -2, r: 2 },
       { q: -1, r: 2 }, { q: 0, r: 2 }, { q: 1, r: 1 },
       { q: 3, r: -1 }, { q: 2, r: 1 }, { q: 1, r: 2 },
-      { q: -1, r: 3 }, { q: -2, r: 3 }
+      { q: -1, r: 3 }, { q: -2, r: 3 }, { q: -3, r: 2 },
+      { q: -3, r: 1 }
     ]
 
     const pos = positions[index] || { q: 0, r: 0 }
