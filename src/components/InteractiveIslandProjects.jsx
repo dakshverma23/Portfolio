@@ -290,6 +290,40 @@ function Island({ onIslandClick }) {
   )
 }
 
+// Glowing 3D Moon component with floating animation
+function Moon() {
+  const moonRef = useRef()
+  
+  useFrame((state) => {
+    if (moonRef.current) {
+      // Gentle floating animation
+      moonRef.current.position.y = 11 + Math.sin(state.clock.elapsedTime * 0.25) * 0.15
+    }
+  })
+
+  return (
+    <group ref={moonRef} position={[-12, 11, -12]}>
+      {/* Moon Core */}
+      <mesh>
+        <sphereGeometry args={[1.2, 32, 32]} />
+        <meshBasicMaterial color="#fffbe6" />
+      </mesh>
+      
+      {/* Outer Glow Aura 1 */}
+      <mesh scale={[1.15, 1.15, 1.15]}>
+        <sphereGeometry args={[1.2, 32, 32]} />
+        <meshBasicMaterial color="#fffbe6" transparent opacity={0.18} />
+      </mesh>
+      
+      {/* Outer Glow Aura 2 */}
+      <mesh scale={[1.35, 1.35, 1.35]}>
+        <sphereGeometry args={[1.2, 32, 32]} />
+        <meshBasicMaterial color="#fffbe6" transparent opacity={0.06} />
+      </mesh>
+    </group>
+  )
+}
+
 function Water() {
   const waterRef = useRef()
   
@@ -451,10 +485,12 @@ const InteractiveIslandProjects = () => {
       <Canvas shadows>
         <PerspectiveCamera makeDefault position={[6, 5, 10]} fov={50} />
         
-        <ambientLight intensity={0.4} />
+        <ambientLight intensity={0.25} />
+        {/* Moonlight acting as primary light source */}
         <directionalLight
-          position={[10, 10, 5]}
-          intensity={1.2}
+          position={[-12, 11, -12]}
+          intensity={1.4}
+          color="#fffae6"
           castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
@@ -464,6 +500,7 @@ const InteractiveIslandProjects = () => {
 
         <Stars radius={100} depth={50} count={2200} factor={4.5} saturation={0} fade speed={1} />
 
+        <Moon />
         <Island onIslandClick={() => setSelectedProject(null)} />
         <Water />
         <FloatingParticles />
