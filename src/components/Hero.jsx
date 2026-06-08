@@ -82,13 +82,13 @@ const Hero = () => {
       <div className="container mx-auto px-6 relative z-10 text-center">
         <div className="max-w-4xl mx-auto">
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             Hi, I'm <motion.span 
-              className="gradient-text inline-block text-6xl md:text-8xl"
+              className="gradient-text inline-block text-5xl sm:text-7xl md:text-8xl"
               animate={{ 
                 scale: [1, 1.02, 1],
               }}

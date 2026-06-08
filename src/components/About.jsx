@@ -95,7 +95,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-20 grid grid-cols-3 gap-6"
+          className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6"
         >
           {[
             { value: "15+", label: "Projects" },
