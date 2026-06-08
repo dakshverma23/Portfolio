@@ -1,3 +1,5 @@
+'use client'
+
 import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
@@ -5,9 +7,11 @@ import { motion } from 'framer-motion'
 const Hero = () => {
   const [showResumeMenu, setShowResumeMenu] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMounted, setIsMounted] = useState(false)
   const dropdownRef = useRef(null)
 
   useEffect(() => {
+    setIsMounted(true)
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShowResumeMenu(false)
@@ -48,7 +52,7 @@ const Hero = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
     >
       {/* Minimal particles - only 8 */}
-      {[...Array(8)].map((_, i) => (
+      {isMounted && [...Array(8)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full"

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
@@ -17,7 +19,7 @@ function Box() {
   )
 }
 
-const Island3D = () => {
+export default function Island3D() {
   return (
     <div className="w-full h-screen bg-gray-900">
       <Canvas>
@@ -34,5 +36,3 @@ const Island3D = () => {
     </div>
   )
 }
-
-export default Island3D

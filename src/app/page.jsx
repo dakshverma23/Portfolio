@@ -1,13 +1,21 @@
-import { useState, useEffect } from 'react'
-import Navigation from './components/Navigation'
-import Hero from './components/Hero'
-import About from './components/About'
-import InteractiveIslandProjects from './components/InteractiveIslandProjects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import ArtisticBackground from './components/ArtisticBackground'
+'use client'
 
-function App() {
+import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
+import Navigation from '../components/Navigation'
+import Hero from '../components/Hero'
+import About from '../components/About'
+import Contact from '../components/Contact'
+import Footer from '../components/Footer'
+import ArtisticBackground from '../components/ArtisticBackground'
+
+// Dynamically import the 3D WebGL Canvas to prevent server-side execution failures
+const InteractiveIslandProjects = dynamic(
+  () => import('../components/InteractiveIslandProjects'),
+  { ssr: false }
+)
+
+export default function Home() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
@@ -45,6 +53,3 @@ function App() {
     </div>
   )
 }
-
-export default App
-

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import TechSphere from './TechSphere'

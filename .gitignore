@@ -30,3 +30,7 @@ dist-ssr
 
 # Vercel
 .vercel
+
+# Next.js
+.next/
+out/
